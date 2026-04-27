@@ -169,12 +169,17 @@ em {
 nav {
     position: fixed;
     top: 0; left: 0; width: 100%;
-    padding: 2rem 4rem;
+    padding: 2rem 4rem 4rem; /* Extended bottom padding for the gradient fade */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     z-index: 100;
-    mix-blend-mode: difference;
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 1) 0%, rgba(5, 5, 5, 0.8) 45%, transparent 100%);
+    pointer-events: none; /* Allows clicks to pass through the invisible faded area */
+}
+
+.logo, .nav-right {
+    pointer-events: auto; /* Re-enables clicking on the actual navigation elements */
 }
 
 .logo {
@@ -219,7 +224,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 8rem 4rem 5rem; /* Prevents text and logo overlap */
+    padding: 8rem 4rem 5rem;
     position: relative;
     overflow: hidden;
 }
@@ -391,7 +396,7 @@ nav {
 }
 
 /* ======================================
-   VIDEO GRID — THE CRAZY PART
+   VIDEO GRID
    ====================================== */
 .video-grid {
     display: grid;
@@ -878,6 +883,7 @@ footer {
 @media (max-width: 1024px) {
     nav {
         padding: 2rem;
+        padding-bottom: 4rem;
     }
     #hero {
         padding: 8rem 2rem 4rem;
@@ -913,9 +919,25 @@ footer {
 
     nav {
         padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        flex-wrap: wrap;
-        gap: 0.8rem;
+        padding-bottom: 4rem; /* Keeps the bottom fade nice and long */
+        flex-wrap: nowrap; /* Prevent wrapping so left/right stay planted */
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .logo {
+        max-width: 50%;
+        line-height: 1.3;
+    }
+
+    .nav-right {
+        flex-direction: column; /* Stack the right-side text vertically */
+        align-items: flex-end; /* Align them tight to the right corner */
+        gap: 0.5rem;
+    }
+
+    .nav-sep {
+        display: none; /* Hide the separator dot on mobile */
     }
 
     #hero { 
