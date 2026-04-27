@@ -3,113 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adikesh Bhargava | Creative Director</title>
+    <title>Adikesh Bhargava | Creative Director & DOP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="noise-overlay"></div>
-    
-    <div class="cursor"></div>
 
-    <nav class="reveal stagger">
+    <!-- Cinematic light leak overlay -->
+    <div class="light-leak"></div>
+    <div class="vignette"></div>
+
+    <div class="cursor"></div>
+    <div class="cursor-trail"></div>
+
+    <nav class="reveal">
         <div class="logo">Adikesh Bhargava</div>
-        <div class="location">Mumbai, IND</div>
+        <div class="nav-right">
+            <span class="location">Mumbai, IND</span>
+            <span class="nav-sep">·</span>
+            <a href="#contact" class="nav-cta hover-target">Collaborate</a>
+        </div>
     </nav>
 
+    <!-- Floating reel counter -->
+    <div class="reel-ticker reveal delay-4">
+        <span class="reel-num" id="reel-counter">00</span>
+        <span class="reel-label">frames</span>
+    </div>
+
     <main>
+        <!-- HERO -->
         <section id="hero">
+            <div class="hero-bg-text" aria-hidden="true">DOP</div>
             <div class="hero-content">
-                <h1 class="reveal delay-1">Visual Architect</h1>
-                <h1 class="reveal delay-2 italic-text">for High-Impact</h1>
-                <h1 class="reveal delay-3">Storytelling</h1>
+                <div class="hero-badge reveal delay-1">Creative Director · Director of Photography</div>
+                <h1 class="reveal delay-2">Visual<br><em>Architect</em><br>for High&#8209;Impact<br>Storytelling.</h1>
             </div>
-            <div class="scroll-indicator reveal delay-4">
-                <span>Scroll to explore</span>
-                <div class="line"></div>
+            <div class="hero-meta reveal delay-3">
+                <div class="scroll-indicator">
+                    <span class="scroll-line"></span>
+                    <span>Scroll</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-num">10+</span>
+                    <span class="stat-label">Years Crafting</span>
+                </div>
             </div>
         </section>
 
+        <!-- ABOUT -->
         <section id="about" class="scene">
+            <div class="about-label reveal">About</div>
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="reveal">I construct narratives that exist at the intersection of raw emotion and meticulous design.</h2>
-                    <p class="reveal">As a Mumbai-based Creative Director and the founder of Bigwave Media, my approach is rooted in cinematic language. I don't just build layouts; I direct scenes. Every project is an editorial exploration blending fashion, advertising, and high-end visual architecture.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="work" class="scene">
-            <h3 class="section-title reveal">Selected Works</h3>
-            <div class="work-grid">
-                <div class="project item-1 reveal">
-                    <div class="image-wrapper">
-                        <div class="img-placeholder"></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Neon Symphony</h4>
-                        <p>Art Direction / Film</p>
-                    </div>
-                </div>
-                <div class="project item-2 reveal delay-1">
-                    <div class="image-wrapper">
-                        <div class="img-placeholder"></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Urban Decay</h4>
-                        <p>Editorial / Print</p>
-                    </div>
-                </div>
-                <div class="project item-3 reveal">
-                    <div class="image-wrapper">
-                        <div class="img-placeholder"></div>
-                    </div>
-                    <div class="project-info">
-                        <h4>Silence</h4>
-                        <p>Brand Identity</p>
+                    <h2 class="reveal">Constructing narratives at the intersection of raw emotion<em> and </em>meticulous design.</h2>
+                    <div class="about-body">
+                        <p class="reveal delay-1">Adikesh Bhargava is a Mumbai-based Creative Director, DOP, and entrepreneur leading Bigwave Media. A decade of experience across filmmaking, advertising, and digital content — combining creative vision with executional precision.</p>
+                        <p class="reveal delay-2">After transitioning from a corporate background into the creative industry, Adikesh developed a 360° understanding of storytelling — approaching every project not just as a creator, but as a problem solver who aligns creativity with business objectives.</p>
+                        <p class="reveal delay-3">Driven by a growth mindset, he builds scalable creative solutions, collaborates with forward-thinking brands, and takes on projects that challenge convention.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- VIDEO ARCHIVE -->
+        <section id="video-archive" class="scene">
+            <div class="archive-top reveal">
+                <div class="section-tag">Selected Archive</div>
+                <div class="archive-count"><span id="archive-shown">0</span> / <span id="archive-total">0</span></div>
+            </div>
+
+            <div class="video-grid" id="video-grid"></div>
+
+            <div class="load-more-container reveal">
+                <button id="load-more-btn" class="load-more-btn hover-target">
+                    <span class="btn-text">Load More Scenes</span>
+                    <span class="btn-icon">↓</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- BIGWAVE -->
         <section id="bigwave" class="scene">
-            <div class="bigwave-content reveal">
-                <p class="subtitle">Founder & Director</p>
-                <h2>BIGWAVE MEDIA</h2>
-                <p class="desc">A boutique production house dedicated to crafting unapologetic, premium visual experiences. We bridge the gap between commercial advertising and arthouse cinema.</p>
+            <div class="bigwave-inner reveal">
+                <p class="bw-eyebrow">Founder & DOP</p>
+                <h2>BIG<br>WAVE<br>MEDIA</h2>
+                <p class="bw-desc">A production company dedicated to quality content for Adverts, Brand Films, Social, and Digital Platforms — from script to screen.</p>
+                <a href="https://www.bigwaveasia.com" target="_blank" class="bigwave-link hover-target">
+                    <span>www.bigwaveasia.com</span>
+                    <span class="arrow">→</span>
+                </a>
             </div>
         </section>
 
+        <!-- CREDITS -->
         <section id="experience" class="scene">
-            <h3 class="section-title reveal">Credits</h3>
+            <div class="section-tag reveal">Credits</div>
             <div class="credits-timeline">
                 <div class="credit-row reveal">
-                    <span class="year">2021 — Present</span>
+                    <span class="year">2017 — Present</span>
                     <span class="role">Creative Director</span>
                     <span class="company">Bigwave Media</span>
                 </div>
-                <div class="credit-row reveal">
-                    <span class="year">2018 — 2021</span>
-                    <span class="role">Art Director</span>
-                    <span class="company">Ogilvy & Mather</span>
-                </div>
-                <div class="credit-row reveal">
-                    <span class="year">2015 — 2018</span>
-                    <span class="role">Lead Designer</span>
-                    <span class="company">Studio Blank</span>
+                <div class="credit-row reveal delay-1">
+                    <span class="year">2016 — Present</span>
+                    <span class="role">Founder / Director of Photography</span>
+                    <span class="company">Bigwave Media</span>
                 </div>
             </div>
         </section>
 
+        <!-- CONTACT -->
         <section id="contact" class="scene">
             <div class="contact-content reveal">
-                <h2>Let's build a scene.</h2>
-                <a href="mailto:contact@adikesh.com" class="email-link hover-target">contact@adikesh.com</a>
+                <div class="contact-header">
+                    <div class="section-tag">Contact</div>
+                    <h2>Let's build<br><em>a scene.</em></h2>
+                    <p class="contact-subtext">Or reach out directly at <a href="mailto:contact@adikesh.com" class="email-link hover-target">contact@adikesh.com</a></p>
+                </div>
+
+                <form class="contact-form reveal delay-1" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="Name" placeholder="Full Name" required class="hover-target">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="Email" placeholder="your@email.com" required class="hover-target">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Brief</label>
+                        <textarea id="message" name="Message" placeholder="Tell me about your project..." rows="4" required class="hover-target"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn hover-target">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
             </div>
-            <footer class="reveal">
-                <p>&copy; 2026 Adikesh Bhargava. All rights reserved.</p>
+            <footer class="reveal delay-2">
+                <p>© 2026 Adikesh Bhargava. All rights reserved.</p>
+                <p>Mumbai, India</p>
             </footer>
         </section>
     </main>
