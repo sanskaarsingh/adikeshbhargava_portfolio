@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = Math.round(scrollPct * 99);
         if (target !== currentFrame) {
             currentFrame = target;
-            reelNum.textContent = String(currentFrame).padStart(2, '0');
+            if(reelNum) reelNum.textContent = String(currentFrame).padStart(2, '0');
         }
     };
 
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bindHoverTargets();
 
         if (currentCount >= videoDatabase.length) {
-            loadMoreBtn.style.display = 'none';
+            if (loadMoreBtn) loadMoreBtn.style.display = 'none';
         }
     };
 
@@ -230,21 +230,58 @@ document.addEventListener("DOMContentLoaded", () => {
     bindHoverTargets();
 
     // ============================================================
-    // 5. CONTACT FORM — fix: use mailto properly
+    // 5. CONTACT FORM — Active AJAX Submission via Web3Forms
     // ============================================================
     const contactForm = document.getElementById('contact-form');
+    
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name    = document.getElementById('name').value.trim();
-            const email   = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent page reload
+            
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText.textContent;
+            
+            // UI Feedback: Show sending state
+            btnText.textContent = "Sending...";
+            submitBtn.style.pointerEvents = "none";
+            submitBtn.style.opacity = "0.7";
 
-            if (!name || !email || !message) return;
+            const formData = new FormData(contactForm);
 
-            const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-            const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-            window.location.href = `mailto:contact@adikesh.com?subject=${subject}&body=${body}`;
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Success state
+                    btnText.textContent = "Message Sent!";
+                    contactForm.reset(); // Clear the form
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        btnText.textContent = originalText;
+                        submitBtn.style.pointerEvents = "auto";
+                        submitBtn.style.opacity = "1";
+                    }, 3000);
+                } else {
+                    // Error state from API
+                    console.log(data);
+                    btnText.textContent = "Error. Try Again.";
+                    submitBtn.style.pointerEvents = "auto";
+                    submitBtn.style.opacity = "1";
+                }
+            } catch (error) {
+                // Network error state
+                console.error(error);
+                btnText.textContent = "Error. Try Again.";
+                submitBtn.style.pointerEvents = "auto";
+                submitBtn.style.opacity = "1";
+            }
         });
     }
 
