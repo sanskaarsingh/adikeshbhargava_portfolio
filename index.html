@@ -6,60 +6,74 @@
     <title>Adikesh Bhargava | Creative Director & DOP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Fonts: Inter (Clean Sans) and Playfair Display (Elegant Serif for accents) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="light-leak"></div>
-    <div class="vignette"></div>
+    <!-- Brutalist Noise Texture -->
+    <div class="noise-bg"></div>
 
     <div class="cursor"></div>
     <div class="cursor-trail"></div>
 
     <nav class="reveal">
-        <div class="logo">Adikesh Bhargava</div>
+        <div class="logo">Ad<span class="accent-italic">i</span>kesh Bhar<span class="accent-italic">g</span>ava</div>
         <div class="nav-right">
-            <span class="location">Mumbai, IND</span>
-            <span class="nav-sep">·</span>
-            <a href="#contact" class="nav-cta hover-target">Collaborate</a>
+            <span class="location">+ MUMBAI, IND</span>
+            <span class="nav-sep"></span>
+            <a href="#contact" class="nav-cta hover-target">+ COLLABORATE</a>
         </div>
     </nav>
 
     <div class="reel-ticker reveal delay-4">
+        <span class="reel-label">[ FRAMES ]</span>
         <span class="reel-num" id="reel-counter">00</span>
-        <span class="reel-label">frames</span>
+    </div>
+
+    <!-- Video-inspired fixed metadata -->
+    <div class="fixed-meta reveal delay-3">
+        <div class="meta-item">© IND</div>
+        <div class="meta-item" id="live-clock">00:00</div>
     </div>
 
     <main>
         <section id="hero">
             <div class="hero-bg-text" aria-hidden="true">DOP</div>
             <div class="hero-content">
-                <div class="hero-badge reveal delay-1">Creative Director · Director of Photography</div>
-                <h1 class="reveal delay-2">Visual<br><em>Architect</em><br>for High&#8209;Impact<br>Storytelling.</h1>
+                <div class="hero-badge reveal delay-1">[ CREATIVE DIRECTOR · DIRECTOR OF PHOTOGRAPHY ]</div>
+                <h1 class="reveal delay-2">
+                    V<span class="accent-italic">i</span>sual<br>
+                    <span class="accent-italic">A</span>rchitect<br>
+                    for High-I<span class="accent-italic">m</span>pact<br>
+                    Storytelli<span class="accent-italic">n</span>g.
+                </h1>
             </div>
             <div class="hero-meta reveal delay-3">
                 <div class="scroll-indicator">
+                    <span>[ SCROLL ]</span>
                     <span class="scroll-line"></span>
-                    <span>Scroll</span>
                 </div>
                 <div class="hero-stat">
-                    <span class="stat-num">10+</span>
+                    <span class="stat-num">16+</span>
                     <span class="stat-label">Years Crafting</span>
                 </div>
             </div>
         </section>
 
         <section id="about" class="scene">
-            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777308143/WhatsApp_Image_2026-04-27_at_11.19.28_itelt7.jpg" alt="" class="bg-portrait bg-portrait--about reveal" aria-hidden="true">
-            
-            <div class="about-label reveal">About</div>
             <div class="about-grid" style="position: relative; z-index: 1;">
+                <div class="about-img-wrapper reveal">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777308143/WhatsApp_Image_2026-04-27_at_11.19.28_itelt7.jpg" alt="Adikesh Bhargava" class="brutalist-img">
+                </div>
+                
                 <div class="about-text">
-                    <h2 class="reveal">Constructing narratives at the intersection of raw emotion<em> and </em>meticulous design.</h2>
+                    <div class="section-tag reveal">[ ABOUT ]</div>
+                    <h2 class="reveal">Constructing narratives at the intersection of raw emot<span class="accent-italic">i</span>on and met<span class="accent-italic">i</span>culous design.</h2>
                     <div class="about-body">
-                        <p class="reveal delay-1">Adikesh Bhargava is a Mumbai-based Creative Director, DOP, and entrepreneur leading Bigwave Media. A decade of experience across filmmaking, advertising, and digital content — combining creative vision with executional precision.</p>
-                        <p class="reveal delay-2">After transitioning from a corporate background into the creative industry, Adikesh developed a 360° understanding of storytelling — approaching every project not just as a creator, but as a problem solver who aligns creativity with business objectives.</p>
+                        <p class="reveal delay-1">Adikesh Bhargava is a Mumbai-based Creative Director, DOP, and entrepreneur leading Bigwave Media. With extensive experience across filmmaking, advertising, and digital content, he combines creative vision with executional precision.</p>
+                        <p class="reveal delay-2">After transitioning from a corporate background, Adikesh developed a 360° understanding of storytelling—approaching projects not just as a creator, but as a problem solver aligning creativity with business objectives.</p>
                         <p class="reveal delay-3">Driven by a growth mindset, he builds scalable creative solutions, collaborates with forward-thinking brands, and takes on projects that challenge convention.</p>
                     </div>
                 </div>
@@ -67,284 +81,190 @@
         </section>
 
         <section id="video-archive" class="scene">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80&auto=format&fit=crop" alt="" class="bg-portrait bg-portrait--archive reveal delay-2" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80&auto=format&fit=crop" alt="Archive Background" class="bg-portrait bg-portrait--archive reveal delay-2" aria-hidden="true">
             
             <div class="archive-top reveal" style="position: relative; z-index: 1;">
-                <div class="section-tag">Selected Archive</div>
-                <div class="archive-count"><span id="archive-shown">0</span> / <span id="archive-total">0</span></div>
+                <div class="section-tag">[ ASSOCIATION AND WORK ]</div>
+                <div class="archive-count">[ <span id="archive-shown">0</span> / <span id="archive-total">0</span> ]</div>
             </div>
 
             <div class="video-grid" id="video-grid" style="position: relative; z-index: 1;"></div>
 
             <div class="load-more-container reveal" style="position: relative; z-index: 1;">
                 <button id="load-more-btn" class="load-more-btn hover-target">
-                    <span class="btn-text">Load More Scenes</span>
-                    <span class="btn-icon">↓</span>
+                    <span class="btn-text">LOAD MORE SCENES</span>
+                    <span class="btn-icon">↘</span>
                 </button>
             </div>
         </section>
 
         <section id="trusted-brands" class="scene">
             <div class="tb-header reveal">
-                <div class="section-tag">Trusted By</div>
-                <p class="tb-subline reveal delay-1">Over a decade of brand partnerships, crafted with conviction.</p>
+                <div class="section-tag">[ TRUSTED BY ]</div>
+                <h2 class="tb-title">Brand Partn<span class="accent-italic">e</span>rs</h2>
+                <p class="tb-subline reveal delay-1">Over 16 years of brand partnerships, crafted with conviction.</p>
             </div>
 
-            <div class="brands-marquee-wrap">
-                <div class="brands-track brands-track--left">
-                    <div class="brands-list">
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/Tata_Motors_Logo_ciwcpz.jpg" alt="TATA Logo" class="brand-logo">TATA
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/Suzuki_Ignis_Logo_PNG_Vector_EPS_Free_Download_ylbywt.jpg" alt="Ignis Logo" class="brand-logo">Ignis
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/1729411111-3089_dj9rwb.jpg" alt="Borosil Logo" class="brand-logo">Borosil
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/Rajnigandha_Pearls2021092213072620210922133107_l6ckmt.jpg" alt="Rajnigandha Pearls Logo" class="brand-logo">Rajnigandha Pearls
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/images_hjrxrt.png" alt="Pintola Logo" class="brand-logo">Pintola
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/DC-LOGO-01-1-1200x750_lkiivd.png" alt="DC Jewellers Logo" class="brand-logo">DC Jewellers
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/99acres-logo-hd_mvttuz.webp" alt="99acres Logo" class="brand-logo">99acres
-                        </span>
-                        
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/Tata_Motors_Logo_ciwcpz.jpg" alt="TATA Logo" class="brand-logo">TATA
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/Suzuki_Ignis_Logo_PNG_Vector_EPS_Free_Download_ylbywt.jpg" alt="Ignis Logo" class="brand-logo">Ignis
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/1729411111-3089_dj9rwb.jpg" alt="Borosil Logo" class="brand-logo">Borosil
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/Rajnigandha_Pearls2021092213072620210922133107_l6ckmt.jpg" alt="Rajnigandha Pearls Logo" class="brand-logo">Rajnigandha Pearls
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/images_hjrxrt.png" alt="Pintola Logo" class="brand-logo">Pintola
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/DC-LOGO-01-1-1200x750_lkiivd.png" alt="DC Jewellers Logo" class="brand-logo">DC Jewellers
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/99acres-logo-hd_mvttuz.webp" alt="99acres Logo" class="brand-logo">99acres
-                        </span>
-                    </div>
-                </div>
-                <div class="brands-track brands-track--right">
-                    <div class="brands-list">
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/images_1_oga3qq.png" alt="BGAUSS RUV Logo" class="brand-logo">BGAUSS RUV
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/images_hgcpm0.jpg" alt="Fem Skin Care Logo" class="brand-logo">Fem Skin Care
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398942/images_2_ijnvu6.png" alt="Akash Institute Logo" class="brand-logo">Akash Institute
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/arghaan-white_voesgf.webp" alt="ARGHAAN Logo" class="brand-logo">ARGHAAN
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/logo-3-121164_header_logo_ssuox3.png" alt="Navratan Logo" class="brand-logo">Navratan
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/logo_new_qe49yj.webp" alt="Cotton King Logo" class="brand-logo">Cotton King
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/55c263eb99e9d83e319d1b55c4c8750a_polje5.jpg" alt="Pan Jon Logo" class="brand-logo">Pan Jon
-                        </span>
-                        
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/images_1_oga3qq.png" alt="BGAUSS RUV Logo" class="brand-logo">BGAUSS RUV
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/images_hgcpm0.jpg" alt="Fem Skin Care Logo" class="brand-logo">Fem Skin Care
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398942/images_2_ijnvu6.png" alt="Akash Institute Logo" class="brand-logo">Akash Institute
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/arghaan-white_voesgf.webp" alt="ARGHAAN Logo" class="brand-logo">ARGHAAN
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/logo-3-121164_header_logo_ssuox3.png" alt="Navratan Logo" class="brand-logo">Navratan
-                        </span>
-                        <span class="brand-pill">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/logo_new_qe49yj.webp" alt="Cotton King Logo" class="brand-logo">Cotton King
-                        </span>
-                        <span class="brand-pill brand-pill--accent">
-                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/55c263eb99e9d83e319d1b55c4c8750a_polje5.jpg" alt="Pan Jon Logo" class="brand-logo">Pan Jon
-                        </span>
-                    </div>
-                </div>
+            <div class="brands-grid reveal delay-2">
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/99acres-logo-hd_mvttuz.webp" alt="99acres" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/Tata_Motors_Logo_ciwcpz.jpg" alt="TATA Tiscon" class="brand-logo"></div>
+                <div class="brand-card"><span class="brand-text">Bank of Maharashtra</span></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/Suzuki_Ignis_Logo_PNG_Vector_EPS_Free_Download_ylbywt.jpg" alt="Nexa Ignis" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/1729411111-3089_dj9rwb.jpg" alt="Borosil" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/Rajnigandha_Pearls2021092213072620210922133107_l6ckmt.jpg" alt="Rajnigandha Pearls" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/images_hjrxrt.png" alt="Pintola" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/DC-LOGO-01-1-1200x750_lkiivd.png" alt="DC Jewellers" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398912/images_1_oga3qq.png" alt="BGauss RUV" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/images_hgcpm0.jpg" alt="Fem Skincare" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398942/images_2_ijnvu6.png" alt="Aakash Institute" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/arghaan-white_voesgf.webp" alt="Arghan" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398911/logo-3-121164_header_logo_ssuox3.png" alt="Emami Navratan" class="brand-logo"></div>
+                <div class="brand-card"><img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777398910/logo_new_qe49yj.webp" alt="Cotton King" class="brand-logo"></div>
+                <div class="brand-card"><span class="brand-text">Swaad</span></div>
             </div>
 
-            <div class="brands-stat-row reveal">
+            <div class="brands-stat-row reveal delay-3">
                 <div class="brand-stat-item">
-                    <span class="bs-num">14+</span>
+                    <span class="bs-num counter-val" data-target="25">0+</span>
                     <span class="bs-label">Brands</span>
                 </div>
                 <div class="brand-stat-divider"></div>
                 <div class="brand-stat-item">
-                    <span class="bs-num">70+</span>
+                    <span class="bs-num counter-val" data-target="100">0+</span>
                     <span class="bs-label">Campaigns</span>
                 </div>
                 <div class="brand-stat-divider"></div>
                 <div class="brand-stat-item">
-                    <span class="bs-num">10+</span>
+                    <span class="bs-num counter-val" data-target="16">0+</span>
                     <span class="bs-label">Years</span>
                 </div>
             </div>
         </section>
 
-        <section id="platforms" class="scene">
-            <div class="section-tag reveal">Platforms</div>
-
-<div class="platforms-grid">
-    <div class="platform-block reveal">
-        <div class="platform-block__header">
-            <span class="platform-type-tag">Television</span>
-            <div class="platform-type-line"></div>
-        </div>
-        <div class="platform-channels">
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399547/Zing_logo.svg_qroobj.webp" alt="Zing TV" class="platform-logo">
+        <!-- Dark inverted section inspired by video -->
+        <section id="platforms" class="scene inverted-section">
+            <div class="section-tag reveal">[ PLATFORMS ]</div>
+            <div class="platforms-compact reveal delay-1">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399747/Netflix_Symbol_RGB_zr6lab.png" alt="Netflix" class="platform-icon">
+                    <span>Netflix</span>
                 </div>
-                <span class="channel-name">Zing TV</span>
-            </div>
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399573/Nickelodeon_logo_2009_p9l5hk.png" alt="Nickelodeon" class="platform-logo">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399973/Amazon_Prime_Video_logo.svg_c0rp0q.png" alt="Amazon Prime" class="platform-icon">
+                    <span>Amazon Prime</span>
                 </div>
-                <span class="channel-name">Nickelodeon</span>
-            </div>
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399948/Star_Pravah_2023_cxfott.png" alt="Star Pravah" class="platform-logo">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777400068/Viacom_18.svg_e8atjl.png" alt="Viacom 18" class="platform-icon">
+                    <span>Viacom 18</span>
                 </div>
-                <span class="channel-name">Star Pravah</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="platform-block platform-block--ott reveal delay-1">
-        <div class="platform-block__header">
-            <span class="platform-type-tag">OTT Platforms</span>
-            <div class="platform-type-line"></div>
-        </div>
-        <div class="platform-channels">
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399973/Amazon_Prime_Video_logo.svg_c0rp0q.png" alt="Amazon Prime" class="platform-logo">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399771/d4b1c9acf91de61473c884768eee25f8b9c76ecd557def5ae1b4f2ce4ac61963_200_jsoegg.webp" alt="MX Player" class="platform-icon">
+                    <span>MX Player</span>
                 </div>
-                <span class="channel-name">Amazon Prime</span>
-            </div>
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777400068/Viacom_18.svg_e8atjl.png" alt="Viacom 18" class="platform-logo">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399573/Nickelodeon_logo_2009_p9l5hk.png" alt="Nickelodeon" class="platform-icon">
+                    <span>Nickelodeon</span>
                 </div>
-                <span class="channel-name">Viacom 18</span>
-            </div>
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399747/Netflix_Symbol_RGB_zr6lab.png" alt="Netflix" class="platform-logo">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399547/Zing_logo.svg_qroobj.webp" alt="Zing TV" class="platform-icon">
+                    <span>Zing TV</span>
                 </div>
-                <span class="channel-name">Netflix</span>
-            </div>
-            <div class="platform-channel">
-                <div class="channel-icon">
-                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399771/d4b1c9acf91de61473c884768eee25f8b9c76ecd557def5ae1b4f2ce4ac61963_200_jsoegg.webp" alt="MX Player" class="platform-logo">
+                <div class="platform-pill hover-target">
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777399948/Star_Pravah_2023_cxfott.png" alt="Star Pravah" class="platform-icon">
+                    <span>Star Pravah</span>
                 </div>
-                <span class="channel-name">MX Player</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-            <div class="platforms-grain-strip" aria-hidden="true">
-                <div class="grain-hole"></div><div class="grain-hole"></div><div class="grain-hole"></div>
-                <div class="grain-hole"></div><div class="grain-hole"></div><div class="grain-hole"></div>
-                <div class="grain-hole"></div><div class="grain-hole"></div><div class="grain-hole"></div>
-                <div class="grain-hole"></div><div class="grain-hole"></div><div class="grain-hole"></div>
             </div>
         </section>
         
-        <section id="bigwave" class="scene">
+        <section id="bigwave" class="scene bw-brand-section">
             <div class="bigwave-inner reveal">
-                <p class="bw-eyebrow">Founder & DOP</p>
-                <h2>BIG<br>WAVE<br>MEDIA</h2>
+                <p class="bw-eyebrow">[ FOUNDER & DOP ]</p>
+                
+                <!-- Replaced text heading with the Brand Logo -->
+                <div class="bw-logo-container">
+                    <!-- Put the path to your dark-background logo image here -->
+                    <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777903313/BWM-01_cndfku.png" alt="Bigwave Media" class="bw-brand-logo">
+                </div>
+                
                 <p class="bw-desc">A production company dedicated to quality content for Adverts, Brand Films, Social, and Digital Platforms — from script to screen.</p>
+                
                 <a href="https://www.bigwaveasia.com" target="_blank" class="bigwave-link hover-target">
-                    <span>www.bigwaveasia.com</span>
-                    <span class="arrow">→</span>
+                    <span>WWW.BIGWAVEASIA.COM</span>
+                    <span class="arrow">↗</span>
                 </a>
             </div>
         </section>
 
         <section id="experience" class="scene">
-            <div class="section-tag reveal">Credits</div>
+            <div class="section-tag reveal">[ CREDITS ]</div>
             <div class="credits-timeline">
                 <div class="credit-row reveal">
-                    <span class="year">2017 — Present</span>
+                    <span class="year">2017 — PRESENT</span>
                     <span class="role">Creative Director</span>
-                    <span class="company">Bigwave Media</span>
+                    <span class="company">BIGWAVE MEDIA</span>
                 </div>
                 <div class="credit-row reveal delay-1">
-                    <span class="year">2016 — Present</span>
+                    <span class="year">2016 — PRESENT</span>
                     <span class="role">Founder / Director of Photography</span>
-                    <span class="company">Bigwave Media</span>
+                    <span class="company">BIGWAVE MEDIA</span>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="scene">
-            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777308351/WhatsApp_Image_2026-04-27_at_11.19.28_1_yesrti.jpg" alt="" class="bg-portrait bg-portrait--contact reveal delay-3" aria-hidden="true">
-            
-            <div class="contact-content reveal" style="position: relative; z-index: 1;">
-                <div class="contact-header">
-                    <div class="section-tag">Contact</div>
-                    <h2>Let's build<br><em>a scene.</em></h2>
-                    <p class="contact-subtext">Or reach out directly at <a href="mailto:contact@adikesh.com" class="email-link hover-target">contact@adikesh.com</a></p>
+<section id="contact" class="scene">
+            <div class="contact-grid">
+                <div class="contact-left-column">
+                    <div class="section-tag reveal">[ CONTACT ]</div>
+                    
+                    <!-- Added a row container to place text and image side-by-side -->
+                    <div class="contact-content-row reveal delay-1">
+                        <div class="contact-text">
+                            <h2>Let's bu<span class="accent-italic">i</span>ld<br>a sc<span class="accent-italic">e</span>ne.</h2>
+                            <p class="contact-subtext">Or reach out directly at <br><a href="mailto:contact@adikesh.com" class="email-link hover-target">contact@adikesh.com ↗</a></p>
+                        </div>
+                        
+                        <!-- Brutalist image moved here -->
+                        <div class="contact-img-wrapper">
+                            <img src="https://res.cloudinary.com/da0wl7kqm/image/upload/v1777308351/WhatsApp_Image_2026-04-27_at_11.19.28_1_yesrti.jpg" alt="Contact Adikesh" class="brutalist-img">
+                        </div>
+                    </div>
                 </div>
 
-                <form class="contact-form reveal delay-1" id="contact-form">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="New Project Inquiry from Adikesh.com">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <div class="contact-form-wrapper reveal delay-2">
+                    <form class="contact-form" id="contact-form">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New Project Inquiry from Adikesh.com">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="Name" placeholder="Full Name" required class="hover-target">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="Email" placeholder="your@email.com" required class="hover-target">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Project Brief</label>
-                        <textarea id="message" name="Message" placeholder="Tell me about your project..." rows="4" required class="hover-target"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn hover-target">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-icon">→</span>
-                    </button>
-                </form>
+                        <div class="form-group">
+                            <label for="name">[ NAME ] *</label>
+                            <input type="text" id="name" name="Name" placeholder="Your Name" required class="hover-target">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">[ EMAIL ] *</label>
+                            <input type="email" id="email" name="Email" placeholder="EXAMPLE@MAIL.COM" required class="hover-target">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">[ WHAT ARE YOU BUILDING? ] *</label>
+                            <textarea id="message" name="Message" placeholder="DESCRIBE YOUR PROJECT IN A FEW WORDS" rows="4" required class="hover-target"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn hover-target">
+                            <span class="btn-text">START CONVERSATION</span>
+                            <span class="btn-icon">↗</span>
+                        </button>
+                    </form>
+                </div>
             </div>
-            <footer class="reveal delay-2" style="position: relative; z-index: 1;">
-                <p>© 2026 Adikesh Bhargava. All rights reserved. | Designed by CrysisCulture</p>
-                <p>Mumbai, India</p>
+            
+            <footer class="reveal delay-3">
+                <div class="footer-left">
+                    <span>© 2026 Adikesh Bhargava.</span>
+                </div>
+                <div class="footer-right">
+                    <span>MUMBAI, INDIA</span>
+                </div>
             </footer>
         </section>
-    </main>
 
     <script src="script.js"></script>
 </body>

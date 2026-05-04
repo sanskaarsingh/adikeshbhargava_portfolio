@@ -1,46 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ============================================================
-    // 1. CUSTOM CURSOR — dual ring system
-    // ============================================================
+    // 1. CUSTOM CURSOR (Solid Brutalist styling)
     const cursor = document.querySelector('.cursor');
     const trail = document.querySelector('.cursor-trail');
+    let mouseX = -100, mouseY = -100, trailX = -100, trailY = -100;
 
-    let mouseX = -100, mouseY = -100;
-    let trailX = -100, trailY = -100;
+    if(window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            cursor.style.left = `${mouseX}px`; cursor.style.top = `${mouseY}px`;
+        });
+        const animateTrail = () => {
+            trailX += (mouseX - trailX) * 0.2; trailY += (mouseY - trailY) * 0.2;
+            trail.style.left = `${trailX}px`; trail.style.top = `${trailY}px`;
+            requestAnimationFrame(animateTrail);
+        };
+        animateTrail();
+    }
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = `${mouseX}px`;
-        cursor.style.top  = `${mouseY}px`;
-    });
-
-    // Smooth trailing cursor using rAF
-    const animateTrail = () => {
-        trailX += (mouseX - trailX) * 0.1;
-        trailY += (mouseY - trailY) * 0.1;
-        trail.style.left = `${trailX}px`;
-        trail.style.top  = `${trailY}px`;
-        requestAnimationFrame(animateTrail);
-    };
-    animateTrail();
-
-    const addHover    = () => { cursor.classList.add('hovered'); trail.classList.add('hovered'); };
-    const removeHover = () => { cursor.classList.remove('hovered'); trail.classList.remove('hovered'); };
+    const addHover = () => { cursor?.classList.add('hovered'); trail?.classList.add('hovered'); };
+    const removeHover = () => { cursor?.classList.remove('hovered'); trail?.classList.remove('hovered'); };
 
     const bindHoverTargets = () => {
-        document.querySelectorAll('a, button, input, textarea, .hover-target, .video-item').forEach(el => {
-            el.removeEventListener('mouseenter', addHover);
-            el.removeEventListener('mouseleave', removeHover);
+        document.querySelectorAll('a, button, input, textarea, .hover-target, .video-item, .brand-card').forEach(el => {
             el.addEventListener('mouseenter', addHover);
             el.addEventListener('mouseleave', removeHover);
         });
     };
 
-    // ============================================================
-    // 2. SCROLL REVEAL — Intersection Observer
-    // ============================================================
+    // 2. SCROLL REVEAL OBSERVER
     const revealObserver = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -48,39 +36,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    const observeAll = () => {
-        document.querySelectorAll('.reveal:not(.active)').forEach(el => revealObserver.observe(el));
-    };
-
+    const observeAll = () => { document.querySelectorAll('.reveal:not(.active)').forEach(el => revealObserver.observe(el)); };
     observeAll();
 
-    // Immediately reveal hero + nav
-    setTimeout(() => {
-        document.querySelectorAll('#hero .reveal, nav.reveal, .reel-ticker.reveal').forEach(el => el.classList.add('active'));
-    }, 80);
+    // 3. STAT COUNTER & LIVE CLOCK
+    const counters = document.querySelectorAll('.counter-val');
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = +entry.target.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const inc = target / 30; 
+                    if (count < target) {
+                        count += inc;
+                        entry.target.innerText = Math.ceil(count) + "+";
+                        setTimeout(updateCount, 30);
+                    } else {
+                        entry.target.innerText = target + "+";
+                    }
+                };
+                updateCount();
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
 
-    // ============================================================
-    // 3. REEL COUNTER — counts up with scroll progress
-    // ============================================================
-    const reelNum = document.getElementById('reel-counter');
-    let currentFrame = 0;
+    // Live Clock to mimic video metadata
+    const clockEl = document.getElementById('live-clock');
+    if (clockEl) {
+        setInterval(() => {
+            const now = new Date();
+            clockEl.textContent = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+        }, 1000);
+    }
 
-    const updateReel = () => {
-        const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        const target = Math.round(scrollPct * 99);
-        if (target !== currentFrame) {
-            currentFrame = target;
-            if(reelNum) reelNum.textContent = String(currentFrame).padStart(2, '0');
-        }
-    };
+    setTimeout(() => { document.querySelectorAll('#hero .reveal, nav.reveal').forEach(el => el.classList.add('active')); }, 100);
 
-    window.addEventListener('scroll', updateReel, { passive: true });
-
-    // ============================================================
     // 4. VIDEO DATABASE
-    // ============================================================
+// 4. VIDEO DATABASE
     const videoDatabase = [
         { title: "Taskaree: The Smuggler's Web", url: "https://www.youtube.com/embed/gKhfbEpM45E" },
         { title: "The Ba***ds Of Bollywood", url: "https://www.youtube.com/embed/J-0f7teDD2I" },
@@ -156,133 +153,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const videosPerPage = 6;
     let currentCount = 0;
-
     const videoGrid  = document.getElementById('video-grid');
     const loadMoreBtn = document.getElementById('load-more-btn');
-    const shownEl    = document.getElementById('archive-shown');
-    const totalEl    = document.getElementById('archive-total');
-
-    if (totalEl) totalEl.textContent = videoDatabase.length;
-
-    const updateCount = () => {
-        if (shownEl) shownEl.textContent = Math.min(currentCount, videoDatabase.length);
-    };
+    
+    document.getElementById('archive-total').textContent = videoDatabase.length;
 
     const renderVideos = () => {
         const batch = videoDatabase.slice(currentCount, currentCount + videosPerPage);
-
         batch.forEach((video, i) => {
             const item = document.createElement('div');
-            item.classList.add('video-item');
-            item.style.animationDelay = `${i * 0.08}s`;
+            item.classList.add('video-item', 'hover-target');
+            item.style.animationDelay = `${i * 0.1}s`;
 
-            // Build correct embed URL with autoplay params disabled by default
-            const safeUrl = video.url.includes('?')
-                ? video.url + '&rel=0&modestbranding=1'
-                : video.url + '?rel=0&modestbranding=1';
+            const safeUrl = video.url.includes('?') ? video.url + '&rel=0' : video.url + '?rel=0';
 
             item.innerHTML = `
                 <div class="video-wrapper">
-                    <iframe
-                        src="${safeUrl}"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        allowfullscreen
-                        loading="lazy"
-                        title="${video.title}"
-                    ></iframe>
+                    <iframe src="${safeUrl}" allow="autoplay; fullscreen" loading="lazy" title="${video.title}"></iframe>
                 </div>
                 <div class="play-icon"></div>
-                <div class="video-info">
-                    <h4>${video.title}</h4>
-                </div>
+                <div class="video-info"><h4>${video.title}</h4></div>
             `;
 
-            // Click to enable interaction with iframe
             item.addEventListener('click', () => {
-                // Remove active from all others
                 document.querySelectorAll('.video-item.active-play').forEach(el => {
                     if (el !== item) el.classList.remove('active-play');
                 });
                 item.classList.toggle('active-play');
             });
-
             videoGrid.appendChild(item);
         });
 
         currentCount += batch.length;
-        updateCount();
+        document.getElementById('archive-shown').textContent = Math.min(currentCount, videoDatabase.length);
 
-        // Re-run observers and hover bindings
         observeAll();
         bindHoverTargets();
 
-        if (currentCount >= videoDatabase.length) {
-            if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+        if (currentCount >= videoDatabase.length && loadMoreBtn) {
+            loadMoreBtn.style.display = 'none';
         }
     };
 
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', renderVideos);
-    }
-
-    // Initial render
+    if (loadMoreBtn) loadMoreBtn.addEventListener('click', renderVideos);
     renderVideos();
     bindHoverTargets();
 
-    // ============================================================
-    // 5. CONTACT FORM — Active AJAX Submission via Web3Forms
-    // ============================================================
+    // 5. REEL COUNTER UPDATE ON SCROLL
+    const reelNum = document.getElementById('reel-counter');
+    let currentFrame = 0;
+    window.addEventListener('scroll', () => {
+        const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        const target = Math.round(scrollPct * 99);
+        if (target !== currentFrame) {
+            currentFrame = target;
+            if(reelNum) reelNum.textContent = String(currentFrame).padStart(2, '0');
+        }
+    }, { passive: true });
+
+    // 6. CONTACT FORM
     const contactForm = document.getElementById('contact-form');
-    
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Prevent page reload
-            
+            e.preventDefault(); 
             const submitBtn = contactForm.querySelector('.submit-btn');
             const btnText = submitBtn.querySelector('.btn-text');
             const originalText = btnText.textContent;
             
-            // UI Feedback: Show sending state
-            btnText.textContent = "Sending...";
-            submitBtn.style.pointerEvents = "none";
-            submitBtn.style.opacity = "0.7";
-
-            const formData = new FormData(contactForm);
+            btnText.textContent = "SENDING...";
+            submitBtn.style.pointerEvents = "none"; submitBtn.style.opacity = "0.6";
 
             try {
                 const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
+                    method: 'POST', body: new FormData(contactForm)
                 });
-
                 const data = await response.json();
-
                 if (data.success) {
-                    // Success state
-                    btnText.textContent = "Message Sent!";
-                    contactForm.reset(); // Clear the form
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        btnText.textContent = originalText;
-                        submitBtn.style.pointerEvents = "auto";
-                        submitBtn.style.opacity = "1";
-                    }, 3000);
+                    btnText.textContent = "SENT SUCCESSFULLY";
+                    contactForm.reset();
                 } else {
-                    // Error state from API
-                    console.log(data);
-                    btnText.textContent = "Error. Try Again.";
-                    submitBtn.style.pointerEvents = "auto";
-                    submitBtn.style.opacity = "1";
+                    btnText.textContent = "ERROR SENDING";
                 }
-            } catch (error) {
-                // Network error state
-                console.error(error);
-                btnText.textContent = "Error. Try Again.";
-                submitBtn.style.pointerEvents = "auto";
-                submitBtn.style.opacity = "1";
+            } catch (err) {
+                btnText.textContent = "NETWORK ERROR";
             }
+            setTimeout(() => {
+                btnText.textContent = originalText;
+                submitBtn.style.pointerEvents = "auto"; submitBtn.style.opacity = "1";
+            }, 3000);
         });
     }
-
 });
