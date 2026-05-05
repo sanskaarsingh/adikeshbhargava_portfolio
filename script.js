@@ -1,32 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    // 1. CUSTOM CURSOR (Solid Brutalist styling)
+    // 1. CUSTOM CURSOR (Optimized for Touch Devices)
     const cursor = document.querySelector('.cursor');
     const trail = document.querySelector('.cursor-trail');
     let mouseX = -100, mouseY = -100, trailX = -100, trailY = -100;
+    
+    // Proper touch device detection (better than checking window width)
+    const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
-    if(window.innerWidth > 768) {
+    if (!isTouchDevice && cursor && trail) {
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX; mouseY = e.clientY;
             cursor.style.left = `${mouseX}px`; cursor.style.top = `${mouseY}px`;
         });
+        
         const animateTrail = () => {
             trailX += (mouseX - trailX) * 0.2; trailY += (mouseY - trailY) * 0.2;
             trail.style.left = `${trailX}px`; trail.style.top = `${trailY}px`;
             requestAnimationFrame(animateTrail);
         };
         animateTrail();
+        
+        const addHover = () => { cursor.classList.add('hovered'); trail.classList.add('hovered'); };
+        const removeHover = () => { cursor.classList.remove('hovered'); trail.classList.remove('hovered'); };
+
+        const bindHoverTargets = () => {
+            document.querySelectorAll('a, button, input, textarea, .hover-target, .video-item, .brand-card').forEach(el => {
+                el.addEventListener('mouseenter', addHover);
+                el.addEventListener('mouseleave', removeHover);
+            });
+        };
+        bindHoverTargets();
     }
-
-    const addHover = () => { cursor?.classList.add('hovered'); trail?.classList.add('hovered'); };
-    const removeHover = () => { cursor?.classList.remove('hovered'); trail?.classList.remove('hovered'); };
-
-    const bindHoverTargets = () => {
-        document.querySelectorAll('a, button, input, textarea, .hover-target, .video-item, .brand-card').forEach(el => {
-            el.addEventListener('mouseenter', addHover);
-            el.addEventListener('mouseleave', removeHover);
-        });
-    };
 
     // 2. SCROLL REVEAL OBSERVER
     const revealObserver = new IntersectionObserver((entries, obs) => {
@@ -65,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.5 });
     counters.forEach(c => counterObserver.observe(c));
 
-    // Live Clock to mimic video metadata
     const clockEl = document.getElementById('live-clock');
     if (clockEl) {
         setInterval(() => {
@@ -77,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { document.querySelectorAll('#hero .reveal, nav.reveal').forEach(el => el.classList.add('active')); }, 100);
 
     // 4. VIDEO DATABASE
-// 4. VIDEO DATABASE
     const videoDatabase = [
         { title: "Taskaree: The Smuggler's Web", url: "https://www.youtube.com/embed/gKhfbEpM45E" },
         { title: "The Ba***ds Of Bollywood", url: "https://www.youtube.com/embed/J-0f7teDD2I" },
@@ -127,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "INFECTION Trailer", url: "https://www.youtube.com/embed/d2fIW9RY3d8" },
         { title: "HeRosh!", url: "https://www.youtube.com/embed/9vFAPqILVsU" },
         { title: "Kahaan Main Dhoondhta", url: "https://www.youtube.com/embed/asvTe3E6vtY" },
-        // Vimeo
         { title: "DC Jewellers | The Gold Diamond Ad", url: "https://player.vimeo.com/video/1176953293" },
         { title: "#ItsOurNature | Tata Tiscon", url: "https://player.vimeo.com/video/1176951012" },
         { title: "Shemaroo Bhakti Shrimad Bhagavad Gita", url: "https://player.vimeo.com/video/1176945925" },
@@ -156,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const videoGrid  = document.getElementById('video-grid');
     const loadMoreBtn = document.getElementById('load-more-btn');
     
-    document.getElementById('archive-total').textContent = videoDatabase.length;
+    if(document.getElementById('archive-total')) {
+        document.getElementById('archive-total').textContent = videoDatabase.length;
+    }
 
     const renderVideos = () => {
         const batch = videoDatabase.slice(currentCount, currentCount + videosPerPage);
@@ -185,10 +188,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         currentCount += batch.length;
-        document.getElementById('archive-shown').textContent = Math.min(currentCount, videoDatabase.length);
-
+        if(document.getElementById('archive-shown')) {
+            document.getElementById('archive-shown').textContent = Math.min(currentCount, videoDatabase.length);
+        }
+        
         observeAll();
-        bindHoverTargets();
 
         if (currentCount >= videoDatabase.length && loadMoreBtn) {
             loadMoreBtn.style.display = 'none';
@@ -197,17 +201,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (loadMoreBtn) loadMoreBtn.addEventListener('click', renderVideos);
     renderVideos();
-    bindHoverTargets();
 
-    // 5. REEL COUNTER UPDATE ON SCROLL
+    // 5. REEL COUNTER UPDATE ON SCROLL (Optimized with rAF for smoothness)
     const reelNum = document.getElementById('reel-counter');
     let currentFrame = 0;
+    let isScrolling = false;
+
     window.addEventListener('scroll', () => {
-        const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        const target = Math.round(scrollPct * 99);
-        if (target !== currentFrame) {
-            currentFrame = target;
-            if(reelNum) reelNum.textContent = String(currentFrame).padStart(2, '0');
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                const target = Math.round(scrollPct * 99);
+                if (target !== currentFrame) {
+                    currentFrame = target;
+                    if(reelNum) reelNum.textContent = String(currentFrame).padStart(2, '0');
+                }
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
     }, { passive: true });
 
