@@ -354,7 +354,17 @@ nav {
 .submit-btn { background: var(--text); color: var(--bg-base); border: 1px solid var(--text); padding: 1.2rem 2.5rem; font-family: monospace; font-size: 0.85rem; text-transform: uppercase; transition: all 0.3s; align-self: flex-start; display: inline-flex; gap: 0.8rem; }
 .submit-btn:hover { background: transparent; color: var(--text); }
 
-footer { padding-top: 4rem; margin-top: 4rem; display: flex; justify-content: space-between; font-family: monospace; font-size: 0.8rem; color: var(--text-dim); border-top: 1px solid var(--border); }
+footer { 
+    padding-top: 0.8rem;   /* Border ke theek neeche ki space ekdum kam kar di */
+    margin-top: 1.5rem;    /* Form aur border ke beech ki space kam ki */
+    padding-bottom: 0.5rem; /* Page ke end mein extra space hatane ke liye */
+    display: flex; 
+    justify-content: space-between; 
+    font-family: monospace; 
+    font-size: 0.8rem; 
+    color: var(--text-dim); 
+    border-top: 1px solid var(--border); 
+}
 
 /* --- ANIMATIONS & REVEAL --- */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 1s var(--ease), transform 1s var(--ease); will-change: opacity, transform; }
@@ -387,6 +397,10 @@ footer { padding-top: 4rem; margin-top: 4rem; display: flex; justify-content: sp
     .nav-right { display: none; }
     
     /* --- Mobile Hero Spacing Fixes --- */
+    /* Contact section ke neeche ka extra space remove karne ke liye */
+    #contact.scene {
+        padding-bottom: 1rem; 
+    }
     #hero {
         /* Adjusted padding: clear the nav on top, hug the bottom edge tighter */
         padding: 7rem 2rem 2rem; 
@@ -427,5 +441,9 @@ footer { padding-top: 4rem; margin-top: 4rem; display: flex; justify-content: sp
     .brands-grid { grid-template-columns: repeat(2, 1fr); }
     .brand-card { padding: 1.5rem 1rem; min-height: 100px; }
     
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    footer { 
+        flex-direction: column; 
+        gap: 0.3rem; /* Text ki lines ko ekdum pass le aayega */
+        text-align: center; 
+    }
 }
